@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="HelloWorld.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="500" d:DesignWidth="600">
+
+    <Grid x:Name="LayoutRoot" Background="#FF004BFF" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="auto" />
+            <RowDefinition Height="372*"  />
+        </Grid.RowDefinitions>
+
+        <StackPanel  HorizontalAlignment="Right"  Name="stackPanel1" VerticalAlignment="Top" >
+            <Image Height="62" Name="image1" Stretch="Uniform" Source="/HelloWorld;component/Res/header-va-seal2.png"></Image>
+        </StackPanel>
+        <StackPanel Height="277" HorizontalAlignment="Center"  Orientation="Vertical" Margin="41,60,20,35" Name="stackPanel2" Grid.Row="1">
+            <TextBlock Height="98" Name="textBlockSystem" Text="Continuous Monitoring System" Foreground="#FFDFEFDF" FontFamily="Arial Black" FontSize="32" TextWrapping="Wrap">
+            </TextBlock>          
+            
+            <Canvas Height="100" Name="canvasCts" Width="328" >
+                <Canvas.Resources>
+                    <Style TargetType="Rectangle" x:Key="theTemplate">
+                        <Setter Property="Width" Value="36"/>
+                        <Setter Property="Height" Value="36"/>
+                        <Setter Property ="Canvas.Top" Value="39"/>
+                        <Setter Property="Fill">
+                            <Setter.Value>
+                                <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" 
+                                    RadiusX="0.5" RadiusY="0.5">
+                                    <RadialGradientBrush.GradientStops>
+                                        <GradientStop Color="Red" Offset="0" />
+                                        <GradientStop Color="Blue" Offset="0.5" />
+                                    </RadialGradientBrush.GradientStops>
+                                </RadialGradientBrush>
+                            </Setter.Value>
+                        </Setter> 
+                    </Style>
+                    <Storyboard x:Name="storyBoradGreeting" AutoReverse ="True" RepeatBehavior="Forever" >
+                        <DoubleAnimation From="40" To="290" Duration="00:00:10"
+                                         Storyboard.TargetName ="B1" Storyboard.TargetProperty="(Canvas.Left)">
+                            <DoubleAnimation.EasingFunction>
+                                <ElasticEase Oscillations="3" EasingMode="EaseOut"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                    
+                    
+                </Canvas.Resources>
+
+                <Rectangle Name="C1"  Style="{StaticResource theTemplate}" Canvas.Left="25" Fill ="Coral" ToolTipService.ToolTip="CATEGORIZE Information System"/>
+                <Rectangle Name="C2"  Style="{StaticResource theTemplate}" Canvas.Left="75" Fill ="Pink" ToolTipService.ToolTip="SELECT Security Controls"/>
+                <Rectangle Name="C3"  Style="{StaticResource theTemplate}" Canvas.Left="125" Fill="Yellow" ToolTipService.ToolTip="IMPLEMENT Security Controls"/>
+                <Rectangle Name="C4"  Style="{StaticResource theTemplate}" Canvas.Left="175" Fill="Bisque" ToolTipService.ToolTip="ASSESS Security Controls"/>
+                <Rectangle Name="C5"  Style="{StaticResource theTemplate}"  Canvas.Left="225" Fill="Cyan"  ToolTipService.ToolTip="AUTHORIZE Information System"/>
+                <Rectangle Name="C6"  Style="{StaticResource theTemplate}" Canvas.Left="275" Fill="BurlyWood" ToolTipService.ToolTip="MONITOR Security Controls"/>
+
+                <!-- 
+                <Button Canvas.Left="40" Canvas.Top="39" Content="B1" Name="B1"  Height="36" Width="36" Foreground="Red" Background= "Red" />
+                <Button Canvas.Left="90" Canvas.Top="39" Content="B2" Height="36" Name="B2" Width="36" Background= "Yellow" />
+                <Button Canvas.Left="140" Canvas.Top="39" Content="B3" Height="36" Name="B3" Width="36" />
+                <Button Canvas.Left="190" Canvas.Top="39" Content="B4" Height="36" Name="B4" Width="36" />
+                <Button Canvas.Left="240" Canvas.Top="39" Content="B5" Height="36" Name="B5" Width="36" />
+                -->
+
+            </Canvas>
+        </StackPanel>
+  
+    </Grid>
+</UserControl>
